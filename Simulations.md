@@ -18,8 +18,15 @@ for f in {1..10}; do bash AdmixSim2structure.sh AdmixSim2fungaladmixonlyG${f}.ou
 /Applications/standard-RAxML-master/raxmlHPC-SSE3 -m GTRGAMMA -n AdmixSim2fungaladmixonly -s AdmixSim2fungaladmixonly.out.fasta -p 1234 -f a -x 4321 -# 100
 ```
 5. Use GetPairwiseDistances.R script to generate a pairwise distance table (taxa_pairwise_dist.txt)
-6. Use MaxPairwiseDistances.pl script to subsample 31 individuals with highest pairwise distances:
+6. Sort distance table from highest to lowest distance:
 ```bash
-perl MaxPairwiseDistances.pl AdmixSim2fungaladmixonly_distances.txt 31 > AdmixSim2fungaladmixonly31.txt
+sort -k4nr taxa_pairwise_dist.txt | awk '{print $2, $3, $4}' | sed 's/"//g' > AdmixSim2fungaladmixonly_distances.txt
 ```
-6. Drop tips from tree that are not in this list:
+7. Use MaxPairwiseDistances.pl script to subsample 31 individuals with highest pairwise distances:
+```bash
+perl MaxPairwiseDistances.pl AdmixSim2fungaladmixonly_distances.txt 31 > seqs2keep
+```
+8. Drop tips from tree that are not in this list:
+```bash
+perl KeepFastas.pl seqs2keep AdmixSe2fungaladmixonly31.fasta
+```
