@@ -13,7 +13,7 @@ for f in {1..10}; do python Downloads/AdmixSim2.py -i AdmixSim2fungal -p Admix1 
 ```bash
 for f in {1..10}; do bash AdmixSim2structure.sh AdmixSim2fungaladmixonlyG${f}.out; done
 ```
-4. Use RAxML to build a maximum liklehood tree:
+4. Use RAxML to build a maximum likelihood tree:
 ```bash
 /Applications/standard-RAxML-master/raxmlHPC-SSE3 -m GTRGAMMA -n AdmixSim2fungaladmixonly -s AdmixSim2fungaladmixonly.out.fasta -p 1234 -f a -x 4321 -# 100
 ```
