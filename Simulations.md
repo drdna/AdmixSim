@@ -10,11 +10,15 @@ AdmixSim2fungal.mod
 ```bash
 for f in {1..10}; do python Downloads/AdmixSim2.py -i AdmixSim2fungal -p Admix1 -g $f -n 50 --rec-rate 0.0000005 --mut-rate 0.0000005 -o AdmixSim2fungaladmixonlyG${f}.out; done
 ```
+...or for multigenerational output:
+```bash
+for f in {1..10} ;do python Downloads/AdmixSim2.py -i AdmixSim2fungalAdmixOnly/AdmixSim2bottleneck -p Admix1,Admix1,Admix1,Admix1,Admix1,Admix1,Admix1,Admix1,Admix1 -g 2,3,4,5,6,7,8,9,10 -n 50,50,50,50,50,50,50,50,50 --rec-rate 0.0000005 --mut-rate 0.0000005 -o AdmixSim2testExpt${f}.out; done
+```
 3. Use AdmixSim2structure.sh script to generate fasta files and structure input files:
 ```bash
 for f in {1..10}; do bash AdmixSim2structure.sh AdmixSim2fungaladmixonlyG${f}.out; done
 ```
-4. Or for multigenerational outputs:
+...or for multigenerational outputs:
 ```bash
 awk 'BEGIN{n=1; group=1} {filename="AdmixSim2_G"group".fasta"; print ">seq"n"\n"$0 > filename; n++; if (n > 100) {n=1; group++}}' AdmixSim2test.out.hap
 ```
