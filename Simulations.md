@@ -14,6 +14,10 @@ for f in {1..10}; do python Downloads/AdmixSim2.py -i AdmixSim2fungal -p Admix1 
 ```bash
 for f in {1..10}; do bash AdmixSim2structure.sh AdmixSim2fungaladmixonlyG${f}.out; done
 ```
+4. Or for multigenerational outputs:
+```bash
+awk 'BEGIN{n=1; group=1} {filename="AdmixSim2_G"group".fasta"; print ">seq"n"\n"$0 > filename; n++; if (n > 100) {n=1; group++}}' AdmixSim2test.out.hap
+```
 ## Build trees
 1. Use RAxML to build a maximum likelihood tree:
 ```bash
