@@ -46,7 +46,7 @@ perl KeepFastas.pl seqs2keep AdmixSe2fungaladmixonly31.fasta
 ## Run structure to estimate admixture proportions
 Use this [mainparams](scripts/mainparams) file and this [extraparams](scripts/extraparams) file to run structure with the following command:
 ```bash
-for k in {2..10}; do f in {2..10}; do structure -k $k -in AdmixSim2fungaladmixonlyG${f}.out.Structure.txt; done
+for k in {1..10}; do for f in `ls *Structure.txt`; do sbatch $script/Structure.sh $f $k extraparamsLinkage; done; done
 ```
 ## Calculate actual admixture proportions and plot actual admixture inheritance patterns
 Use AdmixSim2Plots.R code
