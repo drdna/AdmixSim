@@ -34,7 +34,7 @@ for f in AdmixSim2testExpt1.out_Gen*txt; do for g in {2..10}; do dir="${f/\.out*
 ```
 4. Use StructureHarvester to identify best K value for each run:
 ```bash
-for f in `ls AdmixSim2testExpt1_Gen*; do StructureHarvester.py --dir $f --out ${f}_shout --evanno --clumpp; done
+for f in `ls -d AdmixSim2testExpt1_Gen*`; do StructureHarvester.py --dir $f --out ${f}_shout --evanno --clumpp; done
 ```
 5. Gather best K values as determined by StructureHarvester:
 ```bash
