@@ -35,7 +35,7 @@ for f in AdmixSim2testExpt1.out_Gen*txt; do for g in {2..10}; do dir="${f/\.out*
 ```bash
 for f in `ls AdmixSim2testExpt1_Gen*; do StructureHarvester.py --dir $f --out ${f}_shout --evanno --clumpp; done
 ```
-5. Gather best K values as determine by StructureHarvester:
+5. Gather best K values as determined by StructureHarvester:
 ```bash
 for f in `ls AdmixSim2testExpt1_Gen*out/evanno.txt`; do perl BestK.pl $f; done
 ```
