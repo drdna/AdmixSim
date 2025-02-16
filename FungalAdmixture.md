@@ -22,7 +22,7 @@ for f in {2..10}; do python Downloads/AdmixSim2.py -i AdmixSim2fungalAdmixOnly/A
 ```bash
 for f in `ls AdmixSim2testExpt*.out.hap`; do perl FastaStructreFromAdmixSim2.pl $f; done
 ```
-(note: the structure input files are downsampled (only every 20th variant site included):
+(note: the structure input files are downsampled - only every 20th variant site included):
 2. Run STRUCTURE using k values of 1 through 10 for ten iterations of each experiment (10 evolved populations x 9 generations x 10 k values x 10 replicates):
 ```bash
 for rep in {1..10}; do for k in {1..10}; do for f in `ls *Expt*Gen*Structure.txt`; do sbatch $script/Structure.sh $f $k extraparamsLinkage $rep; done; done; done
