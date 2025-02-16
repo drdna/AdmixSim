@@ -44,7 +44,7 @@ for f in `ls AdmixSim2testExpt1_Gen*out/evanno.txt`; do perl BestK.pl $f; done
 ```bash
 code
 ```
-7. Build metadata table for annotating the Nneighbor networks:
+7. Build metadata table for annotating the neighbor networks:
 ```bash
 code
 ```
