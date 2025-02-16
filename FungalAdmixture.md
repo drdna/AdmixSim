@@ -1,7 +1,7 @@
 ## Simulate the evolution of an entire fungal population in a hybrid swarm
-1. Use AdmixSim2 to evolve a population for ten ten generations following the mating of two distinct haplotypesa and sample 50 individuals (100 chromosomes) in generations 2 through 10. Model file looks like this:
+1. Use AdmixSim2 to evolve a population for 10 generations following the mating of two distinct haplotypes. Sample 50 individuals (100 chromosomes) from each of generations 2 through 10. Evolutionary model file looks like this:
 ```bash
-*1-10	Anc1,Anc2,Admix1
+*1-10	Anc1,Anc2,Admix1f 
 0,0,50	0.5,0.5,0
 0,0,500	0,0,1
 0,0,5000	0,0,1
@@ -13,9 +13,9 @@
 0,0,50000	0,0,1
 0,0,50000	0,0,1
 ```
-and code used was as follows:
+and code used was as follows (recombination rate was 2e-7 and mutation rate was 0):
 ```bash
-for f in {2..10}; do python Downloads/AdmixSim2.py -i AdmixSim2fungalAdmixOnly/AdmixSim2bottleneck -p Admix1,Admix1,Admix1,Admix1,Admix1,Admix1,Admix1,Admix1,Admix1 -g 2,3,4,5,6,7,8,9,10 -n 50,50,50,50,50,50,50,50,50 --rec-rate 0.0000005 --mut-rate 0.0000005 -o AdmixSim2testG${f}.out; done
+for f in {2..10}; do python Downloads/AdmixSim2.py -i AdmixSim2fungalAdmixOnly/AdmixSim2bottleneck -p Admix1,Admix1,Admix1,Admix1,Admix1,Admix1,Admix1,Admix1,Admix1 -g 2,3,4,5,6,7,8,9,10 -n 50,50,50,50,50,50,50,50,50 --rec-rate 0.0000002 --mut-rate 0 -o AdmixSim2testG${f}.out; done
 ```
 ## Determine structure of the evolved populations:
 1. Build fasta and structure files using the evolved haplotypes in the .hap files and site information in the .snv files:
